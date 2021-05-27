@@ -1,0 +1,53 @@
+extends layout
+
+block contenido
+    .contenedor
+        h3 Reportes
+        .inputs2
+            .padding5
+                label(for="tipo") Tipo de reporte
+                select(class="form-control" id="tipo")
+                    option(value="1") Unidades
+            .padding5
+                label(for="id_admin") Admins Wialon
+                div(class="comboAdminWialon" style="width:100%;")
+        .inputs3
+            .padding5
+                label(for="tipo") Año
+                select(class="form-control" id="anho")
+                    option(value="2020") 2020
+                    option(value="2021") 2021
+            .padding5
+                label(for="fecha_ini") Mes inicial
+                select(class="form-control" id="fecha_ini")
+                    option(value="/01/") Enero
+                    option(value="/02/") Febrero
+                    option(value="/03/") Marzo
+                    option(value="/04/") Abril
+                    option(value="/05/") Mayo
+                    option(value="/06/") Junio
+                    option(value="/07/") Julio
+                    option(value="/08/") Agosto
+                    option(value="/09/") Septiembre
+                    option(value="/10/") Octubre
+                    option(value="/11/") Noviembre
+                    option(value="/12/") Diciembre
+            .padding5
+                label(for="fecha_fin") Mes final
+                select(class="form-control" id="fecha_fin")
+                    option(value="/01/") Enero
+                    option(value="/02/") Febrero
+                    option(value="/03/") Marzo
+                    option(value="/04/") Abril
+                    option(value="/05/") Mayo
+                    option(value="/06/") Junio
+                    option(value="/07/") Julio
+                    option(value="/08/") Agosto
+                    option(value="/09/") Septiembre
+                    option(value="/10/") Octubre
+                    option(value="/11/") Noviembre
+                    option(value="/12/" selected) Diciembre
+        button(type="button" class="btn btn-primary consultarReporte") Consultar
+        div(id="espacioReporte" class="cajaTablasReporte")
+        .graficas
+            canvas(id="myChart" width="100" height="100")

@@ -1,0 +1,369 @@
+extends layout
+
+block contenido
+    .contenedor
+        input(id="id_usuario" value=`${id_usuario}` hidden)
+        h3.titulo #{usuarioW}
+        .cajaTablas
+            table(class="tabla-colapse")
+                    thead
+                        tr
+                            th(style="width:20%;") Nombre de cuenta
+                            if a === '0'
+                                th(style="width:5%;") 
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="0" type="text" name="valor")
+                                        input(hidden value="a" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") U/Tot
+                            else if a === '1'
+                                th(style="width:5%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="1" type="text" name="valor")
+                                        input(hidden value="a" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") U/Tot
+                                            span(class="icono icono-up")                                           
+                            else if a === '2'
+                                th(style="width:5%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="2" type="text" name="valor")
+                                        input(hidden value="a" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") U/Tot
+                                            span(class="icono icono-down")   
+
+                            th(style="width:5%;") Ver
+                            if b === '0'
+                                th(style="width:10%;") 
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="0" type="text" name="valor")
+                                        input(hidden value="b" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") Reportando
+                            else if b === '1'
+                                th(style="width:10%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="1" type="text" name="valor")
+                                        input(hidden value="b" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") Reportando
+                                            span(class="icono icono-up")                                           
+                            else if b === '2'
+                                th(style="width:10%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="2" type="text" name="valor")
+                                        input(hidden value="b" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") Reportando
+                                            span(class="icono icono-down")   
+
+
+
+                            if c === '0'
+                                th(style="width:10%;") 
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="0" type="text" name="valor")
+                                        input(hidden value="c" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") mayor/12
+                            else if c === '1'
+                                th(style="width:10%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="1" type="text" name="valor")
+                                        input(hidden value="c" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") mayor/12
+                                            span(class="icono icono-up")                                           
+                            else if c === '2'
+                                th(style="width:10%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="2" type="text" name="valor")
+                                        input(hidden value="c" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") mayor/12
+                                            span(class="icono icono-down")   
+
+
+                            if d === '0'
+                                th(style="width:10%;") 
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="0" type="text" name="valor")
+                                        input(hidden value="d" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") mayor/24
+                            else if d === '1'
+                                th(style="width:10%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="1" type="text" name="valor")
+                                        input(hidden value="d" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") mayor/24
+                                            span(class="icono icono-up")                                           
+                            else if d === '2'
+                                th(style="width:10%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="2" type="text" name="valor")
+                                        input(hidden value="d" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") mayor/24
+                                            span(class="icono icono-down")   
+
+
+                            if e === '0'
+                                th(style="width:10%;") 
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="0" type="text" name="valor")
+                                        input(hidden value="e" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") U/sin/rep.
+                            else if e === '1'
+                                th(style="width:10%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="1" type="text" name="valor")
+                                        input(hidden value="e" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") U/sin/rep.
+                                            span(class="icono icono-up")                                           
+                            else if e === '2'
+                                th(style="width:10%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="2" type="text" name="valor")
+                                        input(hidden value="e" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") U/sin/rep.
+                                            span(class="icono icono-down")   
+
+
+                            if f === '0'
+                                th(style="width:15%;") 
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="0" type="text" name="valor")
+                                        input(hidden value="f" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") Sin reportar
+                            else if f === '1'
+                                th(style="width:15%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="1" type="text" name="valor")
+                                        input(hidden value="f" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") Sin reportar
+                                            span(class="icono icono-up")                                           
+                            else if f === '2'
+                                th(style="width:15%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="2" type="text" name="valor")
+                                        input(hidden value="f" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") Sin reportar
+                                            span(class="icono icono-down")  
+
+                            if g === '0'
+                                th(style="width:15;") 
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="0" type="text" name="valor")
+                                        input(hidden value="g" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") Reportando
+                            else if g === '1'
+                                th(style="width:15%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="1" type="text" name="valor")
+                                        input(hidden value="g" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") Reportando
+                                            span(class="icono icono-up")                                           
+                            else if g === '2'
+                                th(style="width:15%;")
+                                    form(action="/ordenarCuentas" method="post")
+                                        input(hidden value="2" type="text" name="valor")
+                                        input(hidden value="g" type="text" name="columna")
+                                        input(name="id_usuario" value=`${id_usuario}` hidden)
+                                        input(name="nombre_usuario" value=`${usuarioW}` hidden)
+                                        button(class="btn blanco") Reportando
+                                            span(class="icono icono-down")   
+                                                                 
+                            th(style="width:5%;") Usuarios
+                    tbody
+                        -totalUnidades = 0
+                        each cliente of resultado
+                            -totalUnidades += cliente.total_unidades                            
+                            tr
+                                td #{cliente.nombre_cuenta}
+                                td #{cliente.total_unidades}
+                                td 
+                                    button(data-idcuenta = cliente.id data-toggle="modal" data-target="#mostrarUsuarios" class="boton botonUnidades") 
+                                        i(data-idcuenta = cliente.id class="fas fa-eye botonUnidades")
+                                td #{cliente.unidades_reportando}
+                                td #{cliente.mayor_12}
+                                td #{cliente.mayor_24}
+                                td #{cliente.unidades_sin_reportar}
+                                td #{cliente.porcentaje_sin_rep} %
+                                td #{cliente.porcentaje_reportando} %
+                                td                     
+                                    button(data-idcuenta = cliente.id data-toggle="modal" data-target="#mostrarUsuarios" class="boton botonUsuarios") #{cliente.usuarios.length} 
+                        tr
+                                td Totales:
+                                td #{totalUnidades}
+                                td -
+                                td -
+                                td -
+                                td -
+                                td -
+                                td -
+                                td -
+                                td -                     
+
+    div(class="modal fade" id="mostrarUsuarios" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-lg" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            #tituloModal
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            div(class="cajaTablas listaUnidades")
+                                #espacioUsuarios
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" class="botonImg" data-dismiss="modal")
+                                    p(class="heroica") Hecho
+
+    div(class="modal fade" id="monitoreoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-lg" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            #tituloModalUnidades
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            div(class="cajaTablas checkMonitoreo")
+                                input(type="text" id="id_monitoreo" hidden)
+                                input(type="text" id="id_unidad" hidden)
+                                input(type="text" id="alias2" hidden)
+                                table.tabla-colapse
+                                    thead
+                                        tr
+                                            th #
+                                            th Actividad
+                                            th Estatus 
+                                            th Fecha 
+                                            th Aplicar
+                                    tbody
+                                        tr
+                                            td 1
+                                            td Comunicarse con el cliente para ver si la unidad no ha reportado por que en ocasiones lo tienen en taller o bajo techo o algo
+                                            td 
+                                                #e1
+                                            td 
+                                                #f1
+                                            td 
+                                                label(class="switch")
+                                                    input(type="checkbox" class="sw1" id="sw1")
+                                                    span(class="slider round")
+                                        tr
+                                            td 2
+                                            td Borrado de registros a la tarjeta sim 
+                                            td 
+                                                #e2
+                                            td 
+                                                #f2
+                                            td 
+                                                label(class="switch")
+                                                    input(type="checkbox" class="sw2" id="sw2")
+                                                    span(class="slider round")
+                                        tr
+                                            td 3
+                                            td Enviar comando de reset o ping a las unidades
+                                            td 
+                                                #e3
+                                            td 
+                                                #f3
+                                            td 
+                                                label(class="switch")
+                                                    input(type="checkbox" class="sw3" id="sw3")
+                                                    span(class="slider round")
+                                div(class="textArea")
+                                    div#contador
+                                    textarea(id="observaciones", cols="80", rows="4", maxlength="256")
+                                div(class="confirmaciones")
+                                    button(type="button" class="btn guardarComentario")
+                                        img(class="iconoMediano", src="/img/comentario.png", alt="comentario")
+                                    button(type="button" class="btn levantarMonitoreo")
+                                        img(class="iconoMediano", src="/img/reparacion.png", alt="reparacion")
+                                    button(type="button" class="btn generarTicketSoporte")
+                                        img(class="iconoMediano", src="/img/tickets.png", alt="ticket")
+                            
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" class="botonImg" data-dismiss="modal")
+                                    p(class="heroica") Hecho   
+    
+    div(class="modal fade" id="historialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog" style="max-width:1100px;" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            #tituloHistorialModal
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            div(class="cajaTablas espacioHistorial")                             
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" class="botonImg" data-dismiss="modal")
+                                    p(class="heroica") Hecho     
+                                    
+    div(class="modal fade" id="verTicket" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-md" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h5 Ticket de servicio
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            form(id="formularioEvidencia")
+                                .inputs2
+                                    .padding5
+                                        label(for="aliasUnidad2") Alias de unidad
+                                        input(class="form-control" type="text" id="aliasUnidad2" disabled)
+                                    .padding5
+                                        label(for="horafecha") Hora y fecha de servicio
+                                        input(class="form-control" type="text" id="horafecha" disabled)
+                                .padding5
+                                    label(for="observacionesMonitor") Observaciones del Monitor
+                                    textarea(class="form-control" cols="30", rows="3" id="observacionesMonitor" disabled)
+                                .padding5
+                                    label(for="direccionServicio2") Dirección del servicio
+                                    textarea(class="form-control" cols="30", rows="3" id="direccionServicio2" disabled)
+                                .padding5
+                                    label(for="instruccionesServicio2") Instrucciones
+                                    textarea(class="form-control" cols="30", rows="3" id="instruccionesServicio2" disabled)
+                                .padding5
+                                        label(for="aliasUnidad") Ubicación
+                                        div(id="espacioMapaServicio")
+                                        .enlaceMaps
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" data-dismiss="modal" class="botonTabla")
+                                    p(class="heroica") Cerrar

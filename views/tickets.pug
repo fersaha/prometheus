@@ -1,0 +1,126 @@
+extends layout
+
+block contenido
+    .contenedor
+        div(class="cajaTablas espacioTickets")
+            table(class="tabla-colapse")
+                thead
+                    tr
+                        th(style="width:10%;") Folio                  
+                        th(style="width:15%;") Alias
+                        th(style="width:20%;") Fecha
+                        th(style="width:20%;") Técnico
+                        th(style="width:15%;") Estatus
+                        th(style="width:10%;") Asignar
+                        th(style="width:10%;") Ver
+                tbody
+                    each ticket of tickets
+                        tr
+                            td #{ticket.folio}
+                            td #{ticket.alias}
+                            td #{ticket.fecha_a}
+                            if ticket.id_tecnico
+                                td #{ticket.nombre}
+                            else
+                                td(class="amarillo") No asignado
+                            if ticket.estatus === '4'
+                                td(class="amarillo") No asignado
+                            else if ticket.estatus === '5'
+                                td(class="azul") Asignado
+                            else if ticket.estatus === '6'
+                                td Cerrado 
+                            if ticket.id_tecnico     
+                                td                        
+                                    img(src="/img/palomaVerde.png" class="iconoChico")                                              
+                            else
+                                td
+                                    button(data-idticket = ticket.id_ticket data-alias = ticket.alias data-fechaticket = ticket.fecha_a class="botonTabla asignar" data-toggle="modal" data-target="#asignarTecnico")
+                                        img(src="/img/tuercas.png" class="iconoChico asignar" data-idticket = ticket.id_ticket data-alias = ticket.alias data-fechaticket = ticket.fecha_a)                                              
+                            td
+                                button(data-idticket = ticket.id_ticket class="botonTabla verTicket")
+                                    img(src="/img/ojo.png" class="iconoChico verTicket" data-idticket = ticket.id_ticket)                                              
+
+    div(class="modal fade" id="asignarTecnico" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-md" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h5 Asignar técnico
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            input(type="text" hidden id="id_ticket")
+                            .inputs2
+                                .padding5
+                                    label(for="aliasUnidad") Alias de unidad
+                                    input(class="form-control" type="text" id="aliasUnidad" disabled)
+                                .padding5
+                                    label(for="fechaTicket") Fecha de ticket
+                                    input(class="form-control" type="text" id="fechaTicket" disabled)
+                            .inputs2
+                                .padding5
+                                    label(for="nombreMonitorista") Nombre de monitor
+                                    input(class="form-control" type="text" id="nombreMonitorista" disabled)
+                                .padding5
+                                    label(for="fechaMonitoreo") Fecha de monitoreo
+                                    input(class="form-control" type="text" id="fechaMonitoreo" disabled)
+                            .padding5
+                                label(for="observacionesMonitoreo") Observaciones de monitor
+                                textarea(class="form-control" cols="30", rows="4" id="observacionesMonitoreo" disabled)
+                            .inputs2
+                                .padding5
+                                    label(for="fechaServicio") *Fecha de servicio
+                                    input(class="form-control" type="date" id="fechaServicio")
+                                .padding5
+                                    label(for="horaServicio") *Hora de servicio
+                                    input(class="form-control" type="time" id="horaServicio")
+                            .padding5
+                                label(for="direccionServicio") *Dirección de servicio
+                                textarea(class="form-control" cols="30", rows="3" id="direccionServicio")
+                            .padding5
+                                label(for="instruccionesServicio") Instrucciones para llegar
+                                textarea(class="form-control" cols="30", rows="3" id="instruccionesServicio")
+                            .padding5
+                                    label(for="coordenadasAsignar") Coordenadas separadas por coma
+                                    input(class="form-control" type="text" id="coordenadasAsignar" placeholder="XX.XXXXXX,-XX.XXXXXX")
+                            .padding5
+                                label(for="id_tecnico") Técnicos
+                                div(id="comboTecnicos")
+                            
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" class="botonTabla asignarTecnicoBoton")
+                                    p(class="heroica") Asignar
+    
+    div(class="modal fade" id="verTicket" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-md" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h5 Ticket de servicio
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            form(id="formularioEvidencia")
+                                .inputs2
+                                    .padding5
+                                        label(for="aliasUnidad2") Alias de unidad
+                                        input(class="form-control" type="text" id="aliasUnidad2" disabled)
+                                    .padding5
+                                        label(for="horafecha") Hora y fecha de servicio
+                                        input(class="form-control" type="text" id="horafecha" disabled)
+                                .padding5
+                                    label(for="observacionesMonitor") Observaciones del Monitor
+                                    textarea(class="form-control" cols="30", rows="3" id="observacionesMonitor" disabled)
+                                .padding5
+                                    label(for="direccionServicio2") Dirección del servicio
+                                    textarea(class="form-control" cols="30", rows="3" id="direccionServicio2" disabled)
+                                .padding5
+                                    label(for="instruccionesServicio2") Instrucciones
+                                    textarea(class="form-control" cols="30", rows="3" id="instruccionesServicio2" disabled)
+                                .padding5
+                                        label(for="aliasUnidad") Ubicación
+                                        div(id="espacioMapaServicio")
+                                        .enlaceMaps
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" data-dismiss="modal" class="botonTabla")
+                                    p(class="heroica") Cerrar

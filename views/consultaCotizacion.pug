@@ -1,0 +1,55 @@
+extends layoutSM
+
+block contenido
+    -i=0
+    -importe = 0.00
+    -subTotal = 0.00
+    -total = 0.00
+    -iva = 0.00
+    div(style="float:left;width:70%;")
+        div(style="display:flex;")
+            div(class="padding5" style="width:40%;")
+                div(style="width:100%;margin:0 auto;")
+                    img(src="/img/logo.png", alt="Prometeus")
+            div(class="padding5" style="width:60%;")
+                .tarjetaCotizacion
+                    p(class="fuenteOs" style="color:white;background:#3063d3;") Cotización No. : #{folio}
+                    p.fuenteOs Fecha de creación : #{fecha}
+                    p.fuenteOs Elaborado por: #{usuario}
+                    p.fuenteOs Sucursal : 
+        table(class="tabla-colapse")
+            thead 
+                tr 
+                    th Emisor 
+                    th Receptor 
+            tbody 
+                tr 
+                    td Prometheus lite
+                    td #{cotizacion.nombre_cliente} 
+        table(class="tabla-colapse tablaLista")
+            thead
+                tr
+                    th  #
+                    th  Cantidad
+                    th  Descripción
+                    th  P/U
+                    th  Importe
+            tbody
+                each producto in cotizacion.cat_partidas
+                    -importe = producto.cantidad * producto.costo
+                    -subTotal += importe
+                    -i ++
+                    tr
+                        td #{i}
+                        td #{producto.cantidad}
+                        td #{producto.descripcion}
+                        td $ #{producto.costo}
+                        td $ #{importe}
+        .tablaValoresFinales
+            p Subtotal: $ #{subTotal.toFixed(2)}
+            -iva = subTotal * 0.16
+            p IVA 16%: $ #{iva.toFixed(2)}
+            p Total: $ #{(subTotal + iva).toFixed(2)} 
+    div(style="float:left;width:30%;") 
+        .tarjetaObservaciones
+            p #{cotizacion.observaciones}

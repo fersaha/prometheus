@@ -1,0 +1,110 @@
+extends layout
+
+block contenido
+    .contenedor
+        h3 Catálogo de productos
+        .controlListas
+            div(class="inputs3")
+                .padding5
+                    label(class="etiqueta" for="reg_num") Registros
+                    select(class="form-control selectRegistros" id="reg_num")
+                        option(value="50") 50
+                        option(value="100") 100
+                        option(value="500") 500
+                .padding5
+                    label(class="etiqueta" for="reg_bus") Buscar
+                    input(class="form-control inputBuscar" type="text" id="reg_bus" placeholder="Busqueda")
+                .padding5
+                    label(class="etiqueta" for="reg_tot") Totales
+                    input(class="form-control" type="text" id="reg_tot" placeholder="#" disabled) 
+            .padding5   
+                input(type="text" id="offset" hidden value="0")
+                .paginas
+        .tarjetaControles            
+            button(class="btn btn-primary" type="button" style="margin-top:15px;" data-target="#crearProducto" data-toggle="modal" id="botonNuevoProducto") Nuevo 
+        .cajaTablas
+            .divSpinnerProductos
+                .contenedorCarga
+                    .carga    
+            .espacioCatProductos
+
+    div(class="modal fade" id="detalleProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-lg" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h4 Detallazo del producto
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            .divSpinnerClienteDetalle
+                                .contenedorCarga
+                                    .carga    
+                            .espacioClienteDetalle
+                                .padding 
+                                    label(class="etiqueta" for="tituloMP") Nombre
+                                    input(class="form-control" type="text" id="tituloMP" placeholder="Nombre")
+                                .padding 
+                                    label(class="etiqueta" for="codigoMP") Código
+                                    input(class="form-control" type="text" id="codigoMP" placeholder="Código")
+                                .padding 
+                                    label(class="etiqueta" for="costoMP") Costo
+                                    input(class="form-control" type="number" id="costoMP" placeholder="Costo")
+                                .padding 
+                                    label(class="etiqueta" for="inventarioMP") Inventario
+                                    input(class="form-control" type="number" id="inventarioMP" placeholder="Inventario")
+                                .padding 
+                                    label(class="etiqueta" for="tipoMP") Tipo
+                                    select(class="form-control",id="tipoMP")
+                                        option(value="0") Producto Terminado
+                                        option(value="1") Materia Prima 
+                                        option(value="2") Materia Prima y Producto Terminado                               
+                                .padding 
+                                    label(class="etiqueta" for="currency_idM") Moneda
+                                    select(class="form-control",id="currency_idM")
+                                        option(value="b7e2c065-bd52-40ca-b508-3accdd538860") MXN
+                                        option(value="a260c860-9d2d-480a-b090-82cc9408d7f8") USD
+                                .padding 
+                                    label(class="etiqueta" for="unidadMP") Unidad
+                                    select(class="form-control",id="unidadMP")
+                                        option(value="1") Pieza
+                                        option(value="2") Servicio
+                                        option(value="3") Caja
+                                        option(value="4") Plan
+                                        option(value="5") Kit
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" class="btn" data-dismiss="modal")
+                                    p(class="heroica") Hecho  
+
+    div(class="modal fade" id="crearProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-md" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h4 Crear producto
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            .divSpinnerModalPN
+                                .contenedorCarga
+                                    .carga  
+                            .inputsPN
+                                .padding 
+                                    label(class="etiqueta" for="tituloNP") Nombre
+                                    input(class="form-control" type="text" id="tituloNP" placeholder="Nombre")
+                                .padding 
+                                    label(class="etiqueta" for="codigoNP") Código
+                                    input(class="form-control" type="text" id="codigoNP" placeholder="Código")
+                                .padding 
+                                    label(class="etiqueta" for="costoNP") Costo
+                                    input(class="form-control" type="number" id="costoNP" placeholder="Costo")
+                                .padding 
+                                    label(class="etiqueta" for="precioNP") Precio
+                                    input(class="form-control" type="text" id="precioNP" placeholder="Precio")
+                                .padding 
+                                    label(class="etiqueta" for="currency_id") Moneda
+                                    select(class="form-control",id="currency_id")
+                                        option(value="b7e2c065-bd52-40ca-b508-3accdd538860") MXN
+                                        option(value="a260c860-9d2d-480a-b090-82cc9408d7f8") USD
+                        div(class="modal-footer")
+                            form(id="formularioCrearProducto")                     
+                                button(type="submit" class="botonCrearProducto" class="btn btn-primary") Crear   

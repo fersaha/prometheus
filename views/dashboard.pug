@@ -1,0 +1,18 @@
+extends layout
+
+block contenido
+    .contenedor
+        h3 Dashboard
+        .contenedorTarjeta
+            div(class="tarjeta" id="cambioDolar")
+                h4.tituloTarjeta Datos de cambio
+                .lista
+            div(class="tarjeta" id="cambiotc")
+                h4.tituloTarjeta TC a facturar
+                div(class="padding5" style="width:85%;margin:0 auto;")
+                    input(type="text" class="form-control" id="porcentajeValor" placeholder="Ingresar porcentaje ej. 3")
+                div(class="padding5" style="width:85%;margin:0 auto;")
+                    button(type="button" class="btn btn-primary ajustarPorcentaje") Ajustar
+                .listaDatosFacturar
+        .letreroFacturar
+            .listaFacturar

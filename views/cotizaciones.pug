@@ -1,0 +1,132 @@
+extends layout
+
+block contenido
+    .controlListas
+            div(class="inputs3")
+                .padding5
+                    label(class="etiqueta" for="reg_num") Registros
+                    select(class="form-control selectRegistros" id="reg_num")
+                        option(value="50") 50
+                        option(value="100") 100
+                        option(value="500") 500
+                .padding5
+                    label(class="etiqueta" for="reg_bus") Buscar
+                    input(class="form-control inputBuscar" type="text" id="reg_bus" placeholder="Busqueda")
+                .padding5
+                    label(class="etiqueta" for="reg_tot") Totales
+                    input(class="form-control" type="text" id="reg_tot" placeholder="#" disabled) 
+            .padding5   
+                input(type="text" id="offset" hidden value="0")
+                .paginas
+    .tarjetaControles            
+        button(class="btn btn-primary" type="button" style="margin-top:15px;" data-target="#nuevaCotizacion" data-toggle="modal" id="botonNuevaCotizacion") Nueva
+    .cajaTablas
+        .divSpinnerCotizaciones
+            .contenedorCarga
+                .carga    
+        .espacioCotizaciones
+
+    div(class="modal fade" id="nuevaCotizacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+        div(class="modal-dialog modal-lg" role="document")
+            div(class="modal-content")
+                div(class="modal-header")                    
+                    h4 Nueva cotización
+                    button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true") &times;
+                div(class="modal-body")
+                    .padding 
+                        label(for="clienteCot") Cliente
+                        input(class="form-control" type="text"  id="clienteCot" placeholder="Nombre de cliente")
+                    .floatlefts 
+                        div(class="padding5" style="width : 20%;")
+                            label(for="buscarProducto") Producto
+                            input(class="form-control" type="text"  id="buscarProducto" placeholder="Buscar")
+                        div(class="padding5" style="width : 45%;")
+                            label(for="id_producto") Seleccionar
+                            div(id="comboProductos" style="width:100%;")
+                        div(class="padding5" style="width : 20%;")
+                            label(for="cantidad") Cantidad
+                            input(class="form-control" type="number"  id="cantidad" placeholder="Cantidad" value="0")
+                        div(class="padding5" style="width : 15%;")
+                            button(class="btn btn-primary botonAgregarProducto" style="margin-top:30px;margin-left:10px;") Agregar
+                    .espacioProductosCotizacion
+                    form(id="formularioNuevaCotizacion") 
+                        .padding5 
+                            label(for="observacionesCot") Observaciones
+                            textarea(class="form-control",id="observacionesCot", cols="30", rows="3") 
+                        .inputs3
+                            .padding5
+                                label(for="subTotalCotizacion") Sub total
+                                input(class="form-control" type="text" disabled id="subTotalCotizacion" placeholder="Subtotal")
+                            .padding5
+                                label(for="iva") IVA
+                                input(class="form-control" type="text" disabled id="iva" placeholder="IVA")
+                            .padding5
+                                label(for="totalCotizacion") Total
+                                input(class="form-control" type="text" disabled id="totalCotizacion" placeholder="Total")
+                            .padding5 
+                                button(type="submit" class="btn btn-primary") Generar
+
+    div(class="modal fade" id="editarCotizacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+        div(class="modal-dialog modal-lg" role="document")
+            div(class="modal-content")
+                div(class="modal-header")                    
+                    h4 Editar cotización
+                    button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true") &times;
+                div(class="modal-body")
+                    input(hidden,id="id_cotizacion",type="text")
+                    .padding 
+                        label(for="folioCotM") Folio
+                        input(class="form-control" type="text"  id="folioCotM" disabled)
+                    .padding 
+                        label(for="clienteCotM") Cliente
+                        input(class="form-control" type="text"  id="clienteCotM" placeholder="Nombre de cliente")
+                    .floatlefts 
+                        div(class="padding5" style="width : 20%;")
+                            label(for="buscarProductoM") Producto
+                            input(class="form-control" type="text"  id="buscarProductoM" placeholder="Buscar")
+                        div(class="padding5" style="width : 45%;")
+                            label(for="id_productoM") Seleccionar
+                            div(id="comboProductosM" style="width:100%;")
+                        div(class="padding5" style="width : 20%;")
+                            label(for="cantidadM") Cantidad
+                            input(class="form-control" type="number"  id="cantidadM" placeholder="Cantidad" value="0")
+                        div(class="padding5" style="width : 15%;")
+                            button(class="btn btn-primary botonAgregarProductoM" style="margin-top:30px;margin-left:10px;") Agregar
+                    .espacioProductosCotizacionM
+                    form(id="formularioActualizarCotizacion") 
+                        .padding5 
+                            label(for="observacionesCotM") Observaciones
+                            textarea(class="form-control",id="observacionesCotM", cols="30", rows="3") 
+                        .inputs3
+                            .padding5
+                                label(for="subTotalCotizacionM") Sub total
+                                input(class="form-control" type="text" disabled id="subTotalCotizacionM" placeholder="Subtotal")
+                            .padding5
+                                label(for="ivaM") IVA
+                                input(class="form-control" type="text" disabled id="ivaM" placeholder="IVA")
+                            .padding5
+                                label(for="totalCotizacionM") Total
+                                input(class="form-control" type="text" disabled id="totalCotizacionM" placeholder="Total")
+                            .padding5 
+                                button(type="submit" class="btn btn-warning") Actualizar
+
+    div(class="modal fade" id="editarPrecio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+        div(class="modal-dialog modal-sm" role="document")
+            div(class="modal-content")
+                div(class="modal-header")                    
+                    h4 Editar precio
+                    button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true") &times;
+                div(class="modal-body")
+                    input(hidden id="id_key" type="text")
+                    .padding5
+                        label(for="precioNuevo") Nuevo precio
+                        input(class="form-control" type="number"  id="precioNuevo" placeholder="$")
+                    .padding5
+                        label(for="cantidadNueva") Nueva cantidad
+                        input(class="form-control" type="number"  id="cantidadNueva" placeholder="Cantidad")
+                    .padding5
+                        div(class="padding5" style="width : 15%;")
+                            button(class="btn btn-warning cambiarPrecioBoton" style="margin-top:30px;margin-left:10px;") Actualizar

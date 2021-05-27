@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+html(lang="es")
+    head        
+        link(href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet")
+        link(href="/fontawesome-free-5.14.0-web/css/all.css" rel="stylesheet")
+        link(rel="stylesheet", href="/bootstrap/bootstrap.css")
+        link(rel="stylesheet", href="/alertify/css/alertify.css")
+        link(rel="stylesheet", href="/leaflet/leaflet.css")
+        link(rel="stylesheet", href="/css/main.css")      
+        title #{nombrePagina}
+    body
+        if usuario
+            .hero
+                .navbar   
+                    img(src="/img/logo.png" class="logo")
+                    p(class="icono icono-usuario") #{usuarioReducido}
+                    a(href='/cerrarSesion' class="botonlayout") Cerrar sesión 
+                .espaciomainside  
+                    .side-bar
+                        if priv[25]!='0' 
+                            .itemlateral
+                                    a(href='/usuarios' class="dropdown-item icono icono-admin") Usuarios
+                        if priv[24]!='0'
+                            .itemlateral
+                                    a(href='/perfiles' class="dropdown-item icono icono-perfil") Perfiles
+                        if priv[23]!='0'
+                            .itemlateral
+                                    a(href='/clientes' class="icono icono-cliente") Clientes
+                        if priv[23]!='0'
+                            .itemlateral
+                                    a(href='/productos' class="icono icono-productos") Productos
+                    .main
+                        block contenido      
+            
+                //.menu
+                    .logo
+                        img(src="/img/logoSYEGPS.png")
+                    .noticias
+                        h4 #{titulo} 
+                    .notificaciones
+                        
+                //.body
+                    .aside                    
+                        if priv[2]!='1'
+                            .itemlateral
+                                a(href='/perfiles' class="icono icono-perfil") Perfiles  
+                        if priv[3]!='1'
+                            .itemlateral
+                                a(href='/usuarios' class="icono icono-usuario") Usuarios  
+                        if priv[1]!='1'
+                            .itemlateral
+                                a(href='/clientes' class="icono icono-ticket") Clientes 
+                        if priv[0]!='1'  
+                            .itemlateral
+                                a(href='/tickets' class="icono icono-admin") Admins 
+                        if priv[4]!='1'
+                            .itemlateral
+                                a(href='/servicios' class="icono icono-servicio") Servicios   
+                        .itemlateral
+                            a( class="icono icono-salir") Salir   
+        else
+            block contenido
+    script(src="/jquery/jquery.js")
+    script(src="/bootstrap/bootstrap.js")
+    script(src="/alertify/alertify.js")
+    script(src="/leaflet/leaflet.js")
+    script(src="/dist/bundle.js")

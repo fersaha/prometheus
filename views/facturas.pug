@@ -1,0 +1,84 @@
+extends layout
+
+block contenido
+    .contenedor
+        .controlListas
+            div(class="inputs3 seleccionAdminBindInputs")
+                .padding5
+                    label(class="etiqueta" for="id_admin") Administrador
+                    div(class="comboAdminBind" style="width:100%;")
+                .padding5
+                    label(class="etiqueta" for="reg_bus") Registros
+                    select(class="form-control selectRegistros" id="reg_bus")
+                        option(value="50") 50
+                        option(value="100") 100
+                        option(value="500") 500
+                .padding5
+                    label(class="etiqueta" for="reg_inp") Buscar
+                    input(class="form-control inputBuscar" type="text" id="reg_inp" placeholder="Nombre Bind")
+            div(class="floatlefts seleccionaAnhoMes")
+                div(class="padding5" style="width:15%")
+                    label(class="etiqueta" for="reg_tot") Totales
+                    input(class="form-control" type="text" id="reg_tot" placeholder="Número" disabled) 
+                div(class="padding5" style="width:25%")
+                    label(class="etiqueta" for="anho_fact") Año
+                    select(class="form-control anho_fact" id="anho_fact")
+                        option(value="2021") 2021
+                        option(value="2020") 2020
+                        option(value="all") Todos                        
+                div(class="padding5" style="width:25%")
+                    label(class="etiqueta" for="mes_fact") Mes
+                    select(class="form-control mes_fact" id="mes_fact")
+                        option(value="non") Seleccione mes
+                        option(value="-01-") Enero
+                        option(value="-02-") Febrero
+                        option(value="-03-") Marzo
+                        option(value="-04-") Abril
+                        option(value="-05-") Mayo
+                        option(value="-06-") Junio
+                        option(value="-07-") Julio
+                        option(value="-08-") Agosto
+                        option(value="-09-") Septiembre
+                        option(value="-10-") Octubre
+                        option(value="-11-") Noviembre
+                        option(value="-12-") Diciembre
+                div(class="padding5" style="width:15%")
+                    label(class="etiqueta" for="tipo_clienteE") Tipo
+                    select(class="form-control selectRegistros" id="tipo_clienteE")
+                        option(value="all") Todos
+                        option(value="1") Distribuidor
+                        option(value="2") Cliente final
+                div(class="padding5" style="width:20%")   
+                    .paginas
+        .cajaTablas
+            .divSpinner
+                    .contenedorCarga
+                        .carga 
+            .espacioFacturas
+
+    div(class="modal fade" id="seleccion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-sm" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h3 Selección
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            input(type="text" hidden id="id_factura")
+                            input(type="text" hidden id="admin")
+                            div(class="inputs2 espacioEleccionFactura")
+                                .padding5
+                                    button(class="botn xml") Descargar
+                                        img(src="/img/xml.png" class="iconoMediano xml")
+                                .padding5
+                                    button(class="botn pdf") Descargar
+                                        img(src="/img/pdf.png" class="iconoMediano pdf")
+    div(class="modal fade" id="verError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-sm" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h3 Error
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            .errorDes

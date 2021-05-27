@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+html(lang="es")
+    head        
+        link(href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet")
+        link(href="/fontawesome-free-5.14.0-web/css/all.css" rel="stylesheet")
+        link(rel="stylesheet", href="/bootstrap/bootstrap.css")
+        link(rel="stylesheet", href="/alertify/css/alertify.css")
+        link(rel="stylesheet", href="/leaflet/leaflet.css")
+        link(rel="stylesheet", href="/css/main.css")      
+        title #{nombrePagina}
+    body
+        if usuario
+            body
+                .menu
+                    div
+                        img(src="/img/logo2.png" class="logo")
+                    div
+                        a(href="/panel" class="dropdown-btn" title="Gestión") 
+                            i(class="fas fa-user")
+                                span(style="margin-left : 5px;") #{usuarioReducido}
+                    div 
+                        a(href="#" class="dropdown-btn" title="Gestión") 
+                            i(class="fas fa-cogs")
+                                span(style="margin-left : 5px;") Gestión
+                        .dropdown-container
+                            ul 
+                                if priv[25]!='0' 
+                                    li                                
+                                        a(href='/usuarios' class="icono icono-admin") Usuarios
+                                if priv[24]!='0'
+                                    li
+                                        a(href='/perfiles' class="icono icono-perfil") Perfiles
+                    div 
+                        a(href="#" class="dropdown-btn" title="Catálogos") 
+                            i(class="fas fa-book-reader")
+                                span(style="margin-left : 5px;") Catálogos
+                        .dropdown-container
+                            ul
+                                if priv[23]!='0'
+                                    li
+                                        a(href='/clientes' class="icono icono-cliente") Clientes
+                                if priv[23]!='0'
+                                    li
+                                        a(href='/productos' class="icono icono-productos") Productos
+                    div          
+                        a(href="#" class="dropdown-btn" title="Ventas")
+                            i(class="fas fa-dollar-sign")
+                                span(style="margin-left : 5px;") Ventas
+                        .dropdown-container
+                            ul
+                                if priv[23]!='0'
+                                    li
+                                        a(href='/cotizaciones' class="icono icono-cliente") Cotizaciones
+                    div
+                        a(href='/cerrarSesion' class="botonlayout")
+                            i(class="fas fa-sign-out-alt")                   
+                .main
+                    block contenido      
+        else
+            body
+                block contenido
+    script(src="/jquery/jquery.js")
+    script(src="/bootstrap/bootstrap.js")
+    script(src="/alertify/alertify.js")
+    script(src="/leaflet/leaflet.js")
+    script(src="/dist/bundle.js")

@@ -1,0 +1,90 @@
+extends layout
+
+block contenido
+    div(class="contenedor espacioCargaArchivos")
+        div(class="card" style="width: 30rem; margin: 0 auto; margin-top: 25px;")
+            div(class="card-body")
+                h5.card-title Subir excel
+                form(id="formularioSubirArchivo" enctype="multipart/form-data")  
+                    label(style="padding:10px;",for="archivo") Archivo
+                    input(style="padding:10px;",type="file", id="archivo", name="archivo",required)
+                    br
+                    br
+                    button(style="padding:10px;margin: 0 auto;" class="btn btn-primary" type="submit" id="subirXlsx") Subir
+        br
+        div(style="margin : 0 auto; width:90%;")
+            button(class="botn generarPDF" disabled)
+                img(src="/img/iconosPDF.png" class="iconoMediano")
+                p Generar PDF
+            button(class="botn cambioColumnas" data-toggle="modal" data-target="#cambioColumnas" disabled)
+                img(src="/img/actualizar.png" class="iconoMediano")
+                p Columnas
+            button(class="botn ordenColumnas" data-toggle="modal" data-target="#ordenColumnas" disabled)
+                img(src="/img/sorting.png" class="iconoMediano")
+                p Orden
+    div(class="tablaExcel cajaTablasTruck")
+        div(class="contenedorCarga cargaExcel")
+            .carga
+    
+    div(class="modal fade" id="cambioColumnas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+        div(class="modal-dialog modal-sm" role="document")
+            div(class="modal-content")
+                div(class="modal-header")                    
+                    h3 Columnas a visualizar 
+                    button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true") &times;
+                div(class="modal-body")
+                    #columnas                        
+                div(class="modal-footer")                    
+                    button(type="button" class="btn btn-warning botonCambioColumnas") Actualizar   
+                    button(type="button" class="btn btn-primary" data-dismiss="modal") Cerrar   
+    
+    div(class="modal fade" id="descripcionReporte" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+        div(class="modal-dialog modal-sm" role="document")
+            div(class="modal-content")
+                div(class="modal-header")                    
+                    h3 Datos del reporte 
+                    button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true") &times;
+                div(class="modal-body")
+                    .padding5
+                        label(for="tituloRepo") Título:
+                        input(type="text" id="tituloRepo" class="form-control" placeHolder="Titulo")                        
+                    .padding5
+                        label(for="trailerRepo") Trailer:
+                        input(type="text" id="trailerRepo" class="form-control" placeHolder="Trailer")                        
+                    .padding5
+                        label(for="rutaRepo") Ruta:
+                        input(type="text" id="rutaRepo" class="form-control" placeHolder="Ruta")                        
+                    .padding5
+                        label(for="descripcionRepo") Descripción:
+                        textarea(cols="30", rows="10",type="text", id="descripcionRepo", class="form-control")                                            
+                div(class="modal-footer")                    
+                    button(type="button" class="btn btn-warning abrirPdfTruck") Generar   
+                    button(type="button" class="btn btn-primary" data-dismiss="modal") Cerrar   
+    
+    div(class="modal fade" id="ordenColumnas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+        div(class="modal-dialog modal-lg" role="document")
+            div(class="modal-content")
+                div(class="modal-header")                    
+                    h3 Orden de columnas 
+                    button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true") &times;
+                div(class="modal-body")
+                    #ordenDeColumnas
+                    button(type="button" class="btn btn-primary agregarCriterio") Agregar   
+                div(class="modal-footer")                       
+                    button(type="button" class="btn btn-primary" data-dismiss="modal") Cerrar   
+    
+    div(class="modal fade" id="columnasAgregar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+        div(class="modal-dialog modal-sm" role="document")
+            div(class="modal-content")
+                div(class="modal-header")                    
+                    h3 Columnas 
+                    button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true") &times;
+                div(class="modal-body")
+                    .columnasAgregar   
+                div(class="modal-footer")                    
+                    button(type="button" class="btn btn-warning agregarColumnaOrden") Agregar   
+                    button(type="button" class="btn btn-primary" data-dismiss="modal") Cerrar   

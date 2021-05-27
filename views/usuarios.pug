@@ -1,0 +1,58 @@
+extends layout
+
+block contenido
+    .contenedor
+        h3.titulo Catálogo de usuarios
+        div(class="centrado agregarUsuario" data-toggle="modal" data-target="#agregarUsuario")
+            img(src="/img/agregar.png" alt="agregar" class="iconoMediano")
+        div(class="cajaTablas espacioUsuarios listaUsuarios")        
+
+    div(class="modal fade" id="agregarUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-sm" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h5 Agregar nuevo usuario
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            form(id="formularioUsuarioNuevo")
+                                label(for="nicknameUsuario") Usuario
+                                input(class="form-control" type="text" id="nicknameUsuario" placeholder="Usuario")
+                                label(for="id_perfil") Perfil
+                                div(class="comboPerfil" style="width:100%;")
+                                label(for="passwordUsuario") Contraseña
+                                input(class="form-control" type="password" id="passwordUsuario" placeholder="Contraseña")
+                                label(for="nombreUsuario") Nombre
+                                input(class="form-control" type="text" id="nombreUsuario" placeholder="Nombre usuario")
+                                label(for="correoUsuario") Correo
+                                input(class="form-control" type="text" id="correoUsuario" placeholder="Correo")
+                                label(for="telefonoUsuario") Teléfono
+                                input(class="form-control" type="number" id="telefonoUsuario" placeholder="Teléfono")
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" class="botonTabla confirmarAgregarUsuario")
+                                    p(class="heroica") Agregar
+    
+    div(class="modal fade" id="modificarUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-sm" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h5 Modificar usuario
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            input(type="text" hidden id="id_usuario")
+                            label(for="nicknameUsuarioM") Usuario
+                            input(class="form-control" type="text" id="nicknameUsuarioM" placeholder="Usuario")
+                            label(for="id_perfilM") Perfil
+                            div(class="comboPerfilM" style="width:100%;")
+                            label(for="nombreUsuarioM") Nombre
+                            input(class="form-control" type="text" id="nombreUsuarioM" placeholder="Nombre usuario")
+                            label(for="correoUsuarioM") Correo
+                            input(class="form-control" type="text" id="correoUsuarioM" placeholder="Correo")
+                            label(for="telefonoUsuarioM") Teléfono
+                            input(class="form-control" type="number" id="telefonoUsuarioM" placeholder="Teléfono")
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" class="botonTabla modificarUsuario")
+                                    p(class="heroica") Modificar

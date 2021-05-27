@@ -1,0 +1,44 @@
+extends layout
+
+block contenido
+    .cajaTablas
+        table(class="tabla-colapse")
+            thead
+                tr
+                    th(style="width:20%;") Nombre de cuenta
+                    th(style="width:12%;") Tot. de unidades
+                    th(style="width:12%;") Uni. reportando
+                    th(style="width:12%;") May. a 12
+                    th(style="width:12%;") May. a 24
+                    th(style="width:12%;") Uni. sin reportar
+                    th(style="width:12%;") % sin reportar
+                    th(style="width:15%;") % reportando
+                    th(style="width:15%;") Usuarios
+            tbody
+                each cliente of resultado 
+                    tr
+                        td #{cliente.nombre_cuenta}
+                        td #{cliente.total_unidades}
+                        td #{cliente.unidades_reportando}
+                        td #{cliente.mayor_12}
+                        td #{cliente.mayor_24}
+                        td #{cliente.unidades_sin_reportar}
+                        td #{cliente.porcentaje_sin_rep} %
+                        td #{cliente.porcentaje_reportando} %
+                        td                     
+                            button(data-idcuenta = cliente.id data-toggle="modal" data-target="#mostrarUsuarios" class="botonUsuarios") #{cliente.usuarios.length} 
+                            
+
+    div(class="modal fade" id="mostrarUsuarios" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-md" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            #tituloModal
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            #espacioUsuarios
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" class="botonImg" data-dismiss="modal")
+                                    p(class="heroica") Hecho   

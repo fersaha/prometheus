@@ -1,0 +1,44 @@
+extends layout
+
+block contenido
+    .contenedor
+        h3 Catálogo de clientes
+        .controlListas
+            div(class="inputs3")
+                .padding5
+                    label(class="etiqueta" for="reg_num") Registros
+                    select(class="form-control selectRegistros" id="reg_num")
+                        option(value="50") 50
+                        option(value="100") 100
+                        option(value="500") 500
+                .padding5
+                    label(class="etiqueta" for="reg_bus") Buscar
+                    input(class="form-control inputBuscar" type="text" id="reg_bus" placeholder="Busqueda")
+                .padding5
+                    label(class="etiqueta" for="reg_tot") Totales
+                    input(class="form-control" type="text" id="reg_tot" placeholder="#" disabled) 
+            .padding5   
+                input(type="text" id="offset" hidden value="0")
+                .paginas
+        .cajaTablas
+            .divSpinnerClientes
+                .contenedorCarga
+                    .carga    
+            .espacioCatClientes
+
+    div(class="modal fade" id="detalleCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-lg" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            #tituloModal
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            .divSpinnerClienteDetalle
+                                .contenedorCarga
+                                    .carga    
+                            .espacioClienteDetalle
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" class="btn" data-dismiss="modal")
+                                    p(class="heroica") Hecho   

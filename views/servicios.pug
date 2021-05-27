@@ -1,0 +1,109 @@
+extends layout
+
+block contenido
+    .contenedor
+        div(class="cajaTablas espacioServicios")
+            table(class="tabla-colapse")
+                thead
+                    tr
+                        th(style="width:10%;") Folio                    
+                        th(style="width:15%;") Alias
+                        th(style="width:15%;") Fecha servicio
+                        th(style="width:15%;") Hora servicio
+                        th(style="width:15%;") Técnico
+                        th(style="width:15%;") Estatus
+                        th(style="width:5%;") Evidencia
+                        th(style="width:5%;") Ver
+                        th(style="width:5%;") Cerrar
+                tbody
+                    each ticket of tickets
+                        tr
+                            td #{ticket.folio}
+                            td #{ticket.alias}
+                            td #{ticket.fecha_servicio}
+                            td #{ticket.hora_servicio}
+                            if ticket.id_tecnico
+                                td #{ticket.nombre}
+                            else
+                                td(class="amarillo") No asignado
+                            if ticket.estatus === '4'
+                                td(class="amarillo") No asignado
+                            else if ticket.estatus === '5'
+                                td(class="azul") Abierto 
+                            else if ticket.estatus === '6'
+                                td Cerrado                            
+                            td
+                                button(data-idticket = ticket.id_ticket data-alias = ticket.alias class="botonTabla evidencia" data-toggle="modal" data-target="#evidencia")
+                                    img(src="/img/evidencia.png" class="iconoChico evidencia" data-idticket = ticket.id_ticket data-alias = ticket.alias)                                              
+                            td
+                                button(data-idticket = ticket.id_ticket class="botonTabla verTicketServicio")
+                                    img(src="/img/ojo.png" class="iconoChico verTicketServicio" data-idticket = ticket.id_ticket)                                              
+                            td
+                                button(data-idticket = ticket.id_ticket data-alias = ticket.alias data-folio = ticket.folio class="botonTabla terminarTicket")
+                                    img(src="/img/terminar.png" class="iconoChico terminarTicket" data-idticket = ticket.id_ticket data-alias = ticket.alias data-folio = ticket.folio)                                              
+
+    div(class="modal fade" id="evidencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-md" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h5 Evidencias
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            form(id="formularioEvidencia")
+                                input(type="text" name="id_servicio" hidden id="id_servicio")
+                                #tituloEvidencia
+                                .inputs2
+                                    .padding5
+                                        label(for="nombreEvidencia") Nombre de evidencia
+                                        input(name="nombreEvidencia" class="form-control" type="text" id="nombreEvidencia" placeholder="Nombre de evidencia")
+                                    .padding5
+                                        label(for="archivo") Evidencia
+                                        input(name="archivo" class="form-control" type="file" id="archivo")
+                                .padding5                                    
+                                    label(for="observacionesEvidencia") Observaciones de evidencia
+                                    div#contadorEvidencia
+                                    textarea(name="observacionesEvidencia" class="form-control" cols="30", rows="3", maxlength="256", id="observacionesEvidencia")
+                                .padding5
+                                    button(type="submit" class="botonTabla botonEvidencia")
+                                        p(class="heroica") Subir
+                            .cajaTablas
+                                #espacioEvidencias
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" data-dismiss="modal" class="botonTabla")
+                                    p(class="heroica") Cerrar
+    
+    div(class="modal fade" id="verTicket" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-md" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h5 Ticket de servicio
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            form(id="formularioEvidencia")
+                                .inputs2
+                                    .padding5
+                                        label(for="aliasUnidad2") Alias de unidad
+                                        input(class="form-control" type="text" id="aliasUnidad2" disabled)
+                                    .padding5
+                                        label(for="horafecha") Hora y fecha de servicio
+                                        input(class="form-control" type="text" id="horafecha" disabled)
+                                .padding5
+                                    label(for="observacionesMonitor") Observaciones del Monitor
+                                    textarea(class="form-control" cols="30", rows="3" id="observacionesMonitor" disabled)
+                                .padding5
+                                    label(for="direccionServicio2") Dirección del servicio
+                                    textarea(class="form-control" cols="30", rows="3" id="direccionServicio2" disabled)
+                                .padding5
+                                    label(for="instruccionesServicio2") Instrucciones
+                                    textarea(class="form-control" cols="30", rows="3" id="instruccionesServicio2" disabled)
+                                .padding5
+                                        label(for="aliasUnidad") Ubicación
+                                        div(id="espacioMapaServicio")
+                                        .enlaceMaps
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" data-dismiss="modal" class="botonTabla")
+                                    p(class="heroica") Cerrar

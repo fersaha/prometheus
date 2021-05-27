@@ -1,0 +1,81 @@
+extends layout
+
+block contenido
+    .contenedor
+        h3.titulo Catálogo de perfiles
+        div(class="centrado" data-toggle="modal" data-target="#agregarPerfil")
+            img(src="/img/agregar.png" alt="agregar" class="iconoMediano")
+        div(class="cajaTablas espacioPerfiles listaPerfiles")        
+
+    div(class="modal fade" id="agregarPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-sm" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h5 Agregar nuevo perfil
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            form(id="formularioPerfilNuevo")
+                                label(for="nombrePerfil") Nombre
+                                input(class="form-control" type="text" id="nombrePerfil" placeholder="Nombre de perfil")
+                                label(for="pr1") Admins
+                                select(class="form-control" id="pr1")
+                                    option(value="1") No activo
+                                    option(value="2") Activo
+                                label(for="pr2") Tickets
+                                select(class="form-control" id="pr2")
+                                    option(value="1") No activo
+                                    option(value="2") Activo
+                                label(for="pr3") Perfiles
+                                select(class="form-control" id="pr3")
+                                    option(value="1") No activo
+                                    option(value="2") Activo
+                                label(for="pr4") Usuarios
+                                select(class="form-control" id="pr4")
+                                    option(value="1") No activo
+                                    option(value="2") Activo
+                                label(for="pr5") Servicios
+                                select(class="form-control" id="pr5")
+                                    option(value="1") No activo
+                                    option(value="2") Activo
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" class="botonTabla agregarPerfil")
+                                    p(class="heroica") Agregar
+
+    div(class="modal fade" id="modificarPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                div(class="modal-dialog modal-sm" role="document")
+                    div(class="modal-content")
+                        div(class="modal-header")                    
+                            h5 Modificar perfil
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") &times;
+                        div(class="modal-body")
+                            id(type="text" hidden id="id_perfil")
+                            label(for="nombrePerfilM") Nombre
+                            input(class="form-control" type="text" id="nombrePerfilM" placeholder="Nombre de perfil")
+                            div(class="modal-body")
+                            label(for="pr1M") Admins
+                            select(class="form-control" id="pr1M")
+                                option(value="1") No activo
+                                option(value="2") Activo
+                            label(for="pr2M") Tickets
+                            select(class="form-control" id="pr2M")
+                                option(value="1") No activo
+                                option(value="2") Activo
+                            label(for="pr3M") Perfiles
+                            select(class="form-control" id="pr3M")
+                                option(value="1") No activo
+                                option(value="2") Activo
+                            label(for="pr4M") Usuarios
+                            select(class="form-control" id="pr4M")
+                                option(value="1") No activo
+                                option(value="2") Activo
+                            label(for="pr5M") Servicios
+                            select(class="form-control" id="pr5M")
+                                option(value="1") No activo
+                                option(value="2") Activo
+                        div(class="modal-footer")                    
+                            div(id="botonReg")
+                                button(type="button" class="botonTabla modificarPerfil")
+                                    p(class="heroica") Modificar

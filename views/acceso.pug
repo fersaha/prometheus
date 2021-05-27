@@ -1,0 +1,17 @@
+extends layout
+
+block contenido
+    .parallaxLogin
+        .contenedorLogoInicio
+            img(class="logoInicio" src="/img/logo.png")
+        .contenedorLogin          
+            form( method="post" action="/login") 
+                label(for="usuario") Usuario
+                input(class="form-control" type="text" placeholder="Usuario" name="usuario" id="usuario" required)
+                label(for="password") Contraseña
+                input(class="form-control" type="password" placeholder="Contraseña" name="password" id="password" required)
+                br
+                .divCentrado
+                    button(class="btn" type="submit") Acceder
+            if err
+                p.error Usuario o Contraseña incorrecta
